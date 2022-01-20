@@ -1,25 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import './App.css'
+import Movies from './components/Movies'
+import SearchBar from './components/SearchBar'
+import MovieDetails from './components/MovieDetails'
 
-function App() {
+const apiKey = process.env.REACT_APP_OMDB_API_KEY
+
+function App(input) {
+  const [movies, setMovies] = useState([])
+  const [query, setQuery] = useState('spider man')
+  const [selectedMovieId, setSelectedMovieId] = useState(null)
+  // const [targetMovie, setTargetMovie] = useState(null)
+  const [isModalVisible, setModalVisible] = useState(false)
+
+  useEffect(() => {
+    const url = `http://www.omdbapi.com/?s=${query}/&apikey=${apiKey}`
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data.Search)
+      })
+  }, [query])
+
+  // useEffect(() => {
+  //   if (movieId) {
+  //     const urlMovieId = `http://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}`
+  //     fetch(urlMovieId)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setTargetMovie(data)
+  //       })
+  //   }
+  // }, [movieId])
+
+  const addInput = (input) => {
+    setQuery(input)
+  }
+
+  const handleModalClick = () => {
+    setModalVisible(false)
+  }
+
+  const handleMovieClick = (id) => {
+    console.log({ id })
+    setSelectedMovieId(id)
+    setModalVisible(true)
+  }
+
+  const sortBy = (a, b) => {
+    return a['Year'] < b['Year'] ? 1 : a['Year'] > b['Year'] ? -1 : 0
+  }
+  console.log({ isModalVisible })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>FetchFlix</h1>
+        <SearchBar addInput={addInput} input={input} />
       </header>
+      <main>
+        {movies.sort(sortBy).map((movie, index) => (
+          <Movies
+            handleMovieClick={handleMovieClick}
+            key={index}
+            title={movie.Title}
+            poster={movie.Poster}
+            year={movie.Year}
+            id={movie.imdbID}
+          />
+        ))}
+      </main>
+      {isModalVisible ? (
+        <MovieDetails
+          handleModalClick={handleModalClick}
+          id={selectedMovieId}
+        />
+      ) : null}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
