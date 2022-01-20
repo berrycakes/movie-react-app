@@ -10,7 +10,6 @@ function App(input) {
   const [movies, setMovies] = useState([])
   const [query, setQuery] = useState('spider man')
   const [selectedMovieId, setSelectedMovieId] = useState(null)
-  // const [targetMovie, setTargetMovie] = useState(null)
   const [isModalVisible, setModalVisible] = useState(false)
 
   useEffect(() => {
@@ -21,17 +20,6 @@ function App(input) {
         setMovies(data.Search)
       })
   }, [query])
-
-  // useEffect(() => {
-  //   if (movieId) {
-  //     const urlMovieId = `http://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}`
-  //     fetch(urlMovieId)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         setTargetMovie(data)
-  //       })
-  //   }
-  // }, [movieId])
 
   const addInput = (input) => {
     setQuery(input)

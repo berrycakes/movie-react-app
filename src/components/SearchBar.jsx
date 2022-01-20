@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaSearch } from 'react-icons/fa'
 
 const SearchBar = ({ addInput }) => {
   const [input, setInput] = useState('')
@@ -12,7 +13,6 @@ const SearchBar = ({ addInput }) => {
     if (input.trim()) {
       addInput(input)
     }
-    // input.trim() ? addInput({ input }) : null
   }
 
   return (
@@ -22,12 +22,12 @@ const SearchBar = ({ addInput }) => {
           className="search-input"
           type="text"
           name="input"
-          placeholder="Spider man"
+          placeholder="Search by movie title"
           onChange={handleChangeInput}
           value={input}
         />
         <button className="submit-button" type="submit">
-          Search
+          <FaSearch />
         </button>
       </form>
     </div>

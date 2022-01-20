@@ -1,8 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500&display=swap");
 body {
   font-family: "Montserrat", sans-serif;
   color: white;
   background-color: #141414;
+  font-weight: 300;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 header {
@@ -12,27 +20,37 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px 50px 0 50px;
 }
 
 h1 {
   font-family: "Bebas Neue", cursive;
   color: #e50815;
   letter-spacing: 0.2rem;
-  font-size: 4rem;
-  margin: 20px 50px;
+  font-size: 5rem;
+  margin: 20px 0;
 }
 
 main {
-  padding: 50px;
+  padding: 20px 50px;
   display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: 400px;
-      grid-template-rows: 400px;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  grid-auto-rows: 400px;
+  -ms-grid-rows: 450px;
+      grid-template-rows: 450px;
+  grid-column-gap: 40px;
+  grid-row-gap: 30px;
+  grid-auto-rows: 450px;
 }
 
 .movies {
@@ -49,10 +67,10 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
 }
 
 .poster-container {
-  margin: 10px;
   border-radius: 10px;
   height: 350px;
   width: 250px;
@@ -60,8 +78,75 @@ main {
      object-fit: fill;
 }
 
+.title-container {
+  width: 250px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 10px;
+  font-weight: 500;
+}
+
+.year-container {
+  font-style: italic;
+}
+
+.searchBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 0px;
+  border-radius: 30px;
+  padding-left: 30px;
+  width: 300px;
+  -webkit-transition: all ease 1000ms;
+  transition: all ease 1000ms;
+}
+
+.searchBar:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
 .search-input {
-  margin: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  width: 250px;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+.submit-button {
+  position: relative;
+  top: 5px;
+  right: 20px;
+  height: 20px;
+  width: 20px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.movie-container {
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+
+.movie-container:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .movie-details {
@@ -86,7 +171,7 @@ main {
 }
 
 .movie-details-content {
-  margin: 20px;
+  margin: 10px;
   height: 500px;
   width: 700px;
   display: -ms-grid;
@@ -97,14 +182,86 @@ main {
   grid-row-gap: 5px;
 }
 
+.details {
+  padding: 5px 10px;
+}
+
 .details-poster {
   border-radius: 10px;
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1 / 2;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 5;
-  grid-row: 1 / 6;
+}
+
+.details-text {
+  padding: 20px;
+  text-align: justify;
+}
+
+.details-title {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+}
+
+.details-plot {
+  font-style: italic;
+}
+
+.details-rating {
+  margin: 20px;
+  border-radius: 5px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  width: 30px;
+  background-color: gold;
+  color: black;
+}
+
+.star-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  top: 55px;
+  left: 90px;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(53, 53, 53, 0.5);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.star-button:hover {
+  color: gold;
+}
+
+.icons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .invisible {

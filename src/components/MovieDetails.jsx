@@ -11,6 +11,7 @@ const MovieDetails = ({ id, handleModalClick }) => {
         .then((response) => response.json())
         .then((data) => {
           setDetails(data)
+          console.log(data.Genre)
         })
     }
   }, [id])
@@ -24,11 +25,17 @@ const MovieDetails = ({ id, handleModalClick }) => {
             alt={details.Title}
             className="details-poster"
           />
-          <div className="details-title">{details.Title}</div>
-          <div className="details-year">{details.Year}</div>
-          <div className="details-plot">{details.Plot}</div>
-          <div className="details-actors">{details.Actors}</div>
-          <div className="details-runtime">{details.RunTime}</div>
+          <div className="details-text">
+            <div className="details details-title">{details.Title}</div>
+            <div className="details">{details.Year}</div>
+            <div className="details">{details.Actors}</div>
+            <div className="details">{details.Runtime}</div>
+            <div className="details details-plot">{details.Plot}</div>
+            <div className="details">{details.Genre}</div>
+            <div className="icons-container">
+              <div className="details details-rating">{details.imdbRating}</div>
+            </div>
+          </div>
         </div>
       ) : (
         'loading'

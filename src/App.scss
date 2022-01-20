@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500&display=swap');
 $title: 'Bebas Neue', cursive;
 $sans: 'Montserrat', sans-serif;
 $black: #141414;
@@ -8,29 +8,37 @@ body {
   font-family: $sans;
   color: white;
   background-color: $black;
+  font-weight: 300;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px 0 50px;
 }
 
 h1 {
   font-family: $title;
   color: $red;
   letter-spacing: 0.2rem;
-  font-size: 4rem;
-  margin: 20px 50px;
+  font-size: 5rem;
+  margin: 20px 0;
 }
 
 main {
-  padding: 50px;
+  padding: 20px 50px;
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 400px;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  grid-auto-rows: 400px;
+  grid-template-rows: 450px;
+  grid-column-gap: 40px;
+  grid-row-gap: 30px;
+  grid-auto-rows: 450px;
 }
 
 .movies {
@@ -38,18 +46,72 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .poster-container {
-  margin: 10px;
   border-radius: 10px;
   height: 350px;
   width: 250px;
   object-fit: fill;
 }
 
+.title-container {
+  width: 250px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 10px;
+  font-weight: 500;
+}
+
+.year-container {
+  font-style: italic;
+}
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 0px;
+  border-radius: 30px;
+  padding-left: 30px;
+  width: 300px;
+  transition: all ease 1000ms;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
 .search-input {
-  margin: 20px;
+  font-family: $sans;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  width: 250px;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+    background-color: transparent;
+  }
+}
+
+.submit-button {
+  position: relative;
+  top: 5px;
+  right: 20px;
+  height: 20px;
+  width: 20px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.movie-container {
+  transition: all ease 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .movie-details {
@@ -68,7 +130,7 @@ main {
 }
 
 .movie-details-content {
-  margin: 20px;
+  margin: 10px;
   height: 500px;
   width: 700px;
   display: grid;
@@ -77,10 +139,65 @@ main {
   grid-row-gap: 5px;
 }
 
+.details {
+  padding: 5px 10px;
+}
+
 .details-poster {
   border-radius: 10px;
   grid-column: 1 / 2;
-  grid-row: 1 / 6;
+}
+
+.details-text {
+  padding: 20px;
+  text-align: justify;
+}
+
+.details-title {
+  text-align: center;
+  font-family: $title;
+  font-size: 2rem;
+}
+.details-plot {
+  font-style: italic;
+}
+.details-rating {
+  margin: 20px;
+  border-radius: 5px;
+  font-family: $title;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  background-color: gold;
+  color: black;
+}
+
+.star-button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  top: 55px;
+  left: 90px;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(53, 53, 53, 0.5);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    color: gold;
+  }
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
 }
 
 .invisible {
