@@ -3,6 +3,7 @@ $title: 'Bebas Neue', cursive;
 $sans: 'Montserrat', sans-serif;
 $black: #141414;
 $red: #e50815;
+$gold: rgb(253, 204, 70);
 
 body {
   font-family: $sans;
@@ -17,7 +18,7 @@ body {
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 20px 50px 0 50px;
 }
 
@@ -27,6 +28,18 @@ h1 {
   letter-spacing: 0.2rem;
   font-size: 5rem;
   margin: 20px 0;
+  flex-basis: 150%;
+  transition: all ease 0.5s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: $red;
+  }
 }
 
 main {
@@ -57,6 +70,12 @@ main {
 }
 
 .title-container {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 75px;
   width: 250px;
   font-size: 1.2rem;
   text-align: center;
@@ -67,14 +86,75 @@ main {
 .year-container {
   font-style: italic;
 }
+
+.watchlist {
+  width: 400px;
+  text-transform: uppercase;
+}
+
+.watchlist-content {
+  text-transform: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  list-style: none;
+}
+
+h2 {
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.watchlist-card {
+  height: 400px;
+  width: 400px;
+  background-color: black;
+  border-radius: 20px;
+  padding: 30px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    background-color: black;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $black;
+  }
+}
+
+.watchlist-item {
+  color: $gold;
+  padding: 10px;
+}
+
+.watchlist-button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all ease 500ms;
+  &:hover {
+    color: $gold;
+    transform: scale(1.2);
+  }
+}
+
 .searchBar {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   background-color: rgba(255, 255, 255, 0.6);
   margin: 0px;
   border-radius: 30px;
-  padding-left: 30px;
+  padding-left: 20px;
   width: 300px;
+  height: 50px;
   transition: all ease 1000ms;
   &:hover {
     background-color: rgba(255, 255, 255, 0.9);
@@ -92,13 +172,20 @@ main {
   &:focus {
     outline: none;
     background-color: transparent;
+    &::placeholder {
+      color: transparent;
+    }
   }
 }
-
+form {
+  display: flex;
+  flex-direction: row;
+}
 .submit-button {
+  align-self: center;
   position: relative;
-  top: 5px;
-  right: 20px;
+  bottom: 4px;
+  right: 30px;
   height: 20px;
   width: 20px;
   font-size: 1.5rem;
@@ -111,6 +198,7 @@ main {
   transition: all ease 0.5s;
   &:hover {
     transform: scale(1.1);
+    overflow: visible;
   }
 }
 
@@ -171,7 +259,7 @@ main {
   align-items: center;
   height: 30px;
   width: 30px;
-  background-color: gold;
+  background-color: $gold;
   color: black;
 }
 
@@ -191,7 +279,27 @@ main {
   border-radius: 5px;
   color: white;
   &:hover {
-    color: gold;
+    color: $gold;
+  }
+}
+
+.star-button-active {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  top: 55px;
+  left: 90px;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(53, 53, 53, 0.5);
+  border: none;
+  border-radius: 5px;
+  color: $gold;
+  &:hover {
+    color: gray;
   }
 }
 
@@ -200,6 +308,17 @@ main {
   align-items: center;
 }
 
-.invisible {
-  display: none;
+.movie-not-found {
+  grid-column: 2 /4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  & img {
+    height: 400px;
+    width: 300px;
+  }
+  & p {
+    font-size: 2rem;
+  }
 }

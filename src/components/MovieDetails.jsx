@@ -11,7 +11,6 @@ const MovieDetails = ({ id, handleModalClick }) => {
         .then((response) => response.json())
         .then((data) => {
           setDetails(data)
-          console.log(data.Genre)
         })
     }
   }, [id])
