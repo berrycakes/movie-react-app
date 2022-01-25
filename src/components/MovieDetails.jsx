@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react'
-const apiKey = process.env.REACT_APP_OMDB_API_KEY
+import { getMovieDetails } from './utils/getMovieDetails'
 
 const MovieDetails = ({ id, handleModalClick }) => {
   const [details, setDetails] = useState(null)
 
   useEffect(() => {
-    if (id) {
-      const urlMovieId = `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`
-      fetch(urlMovieId)
-        .then((response) => response.json())
-        .then((data) => {
+    const fetch = async () => {
+      if (id) {
+        const data = await getMovieDetails(id)
+        try {
           setDetails(data)
-        })
+        } catch (error) {
+          console.log(error)
+        }
+      }
     }
-  }, [id])
+    fetch()
+  })
 
   return (
     <div className={'movie-details'} onClick={handleModalClick}>

@@ -16,9 +16,10 @@ const SearchBar = ({ addInput }) => {
   }
 
   return (
-    <div className="searchBar" title="searchBar">
+    <div className="searchBar">
       <form onSubmit={handleSubmit}>
         <input
+          title="searchBar"
           className="search-input"
           type="text"
           name="input"
@@ -26,7 +27,7 @@ const SearchBar = ({ addInput }) => {
           onChange={handleChangeInput}
           value={input}
         />
-        <button className="submit-button" type="submit">
+        <button className="submit-button" type="submit" title="submit-button">
           <FaSearch />
         </button>
       </form>

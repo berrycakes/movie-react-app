@@ -5,9 +5,7 @@ import SearchBar from './components/SearchBar'
 import MovieDetails from './components/MovieDetails'
 import placeholderPoster from './film-poster-placeholder.png'
 import Watchlist from './components/Watchlist'
-
-const apiKey = process.env.REACT_APP_OMDB_API_KEY
-// const apiKey = 'f07d13b6'
+import { getMovieList } from './components/utils/getMovieList'
 
 function App(input) {
   const [movies, setMovies] = useState([])
@@ -16,24 +14,23 @@ function App(input) {
   const [isModalVisible, setModalVisible] = useState(false)
   const [watchList, setWatchlist] = useState([])
   const [errorMessage, setErrorMessage] = useState('error')
-  // TODO: watchlist component
 
   useEffect(() => {
-    const url = `http://www.omdbapi.com/?s=${query}/&apikey=${apiKey}`
-    try {
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.Response === 'False') {
-            setMovies([])
-            setErrorMessage(data.Error)
-          } else {
-            setMovies(data.Search)
-          }
-        })
-    } catch (error) {
-      console.log(error)
+    const fetch = async () => {
+      const data = await getMovieList(query)
+      try {
+        if (data.Response === 'False') {
+          console.log(data)
+          setMovies([])
+          setErrorMessage(data.Error)
+        } else {
+          setMovies(data.Search)
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
+    fetch()
   }, [query])
 
   const addInput = (input) => {
@@ -89,7 +86,7 @@ function App(input) {
             ))
         ) : (
           <div className="movie-not-found">
-            <img src={placeholderPoster}></img>
+            <img src={placeholderPoster} alt="movie not found"></img>
             <p>{errorMessage}</p>
           </div>
         )}
