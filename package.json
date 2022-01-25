@@ -1,4 +1,5 @@
 {
+  "homepage": "https://berrycakes.github.io/movie-react-app/",
   "name": "react-api",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +15,8 @@
     "web-vitals": "^2.1.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -40,6 +43,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
+    "gh-pages": "^3.2.3",
     "msw": "^0.18.0",
     "whatwg-fetch": "^3.0.0"
   }
