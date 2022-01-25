@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/movie-react-app/static/css/main.a77d16b8.css",
+    "main.js": "/movie-react-app/static/js/main.336a6c66.js",
+    "static/media/film-poster-placeholder.png": "/movie-react-app/static/media/film-poster-placeholder.a41b3d1422630e16d0aa.png",
+    "index.html": "/movie-react-app/index.html",
+    "main.a77d16b8.css.map": "/movie-react-app/static/css/main.a77d16b8.css.map",
+    "main.336a6c66.js.map": "/movie-react-app/static/js/main.336a6c66.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a77d16b8.css",
+    "static/js/main.336a6c66.js"
+  ]
+}
